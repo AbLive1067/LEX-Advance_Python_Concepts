@@ -1,0 +1,85 @@
+2.
+
+A university wants to automate their admission process. Students are admitted based on marks scored in a qualifying exam.
+
+A student is identified by student id, age and marks in qualifying exam. Data are valid, if:
+a. Age is greater than 20
+b. Marks is between 0 and 100 (both inclusive)
+
+A student qualifies for admission, if
+a. Age and marks are valid and
+b. Marks is 65 or more
+
+Write a python program to represent the students seeking admission in the university.
+
+Business rules
+Class name- Student; attributes (private):- student_id, marks, age ;
+Methods(public):-	__init__() -- Create and initialize all instance variables to none
+			validate_marks() -- if data is valid, return true. Else, return false
+			validate_age() -- if data is valid, return true. Else, return false
+			check_qualification() --  Validate marks and age
+								if valid, check if marks is 65 or more
+									if so return true
+									Else return false
+								Else return false
+			and create appropriate getters and setters methods
+-----------------------------------------------------------------
+Code:-
+
+
+
+class Student:
+    def __init__(self, student_id, marks, age):
+        self.__student_id= student_id
+        self.__marks= marks
+        self.__age= age
+
+    def set__student_id(self, new_student_id):
+        self.__student_id= new_student_id
+    def get__student_id(self):
+        return self.__student_id
+
+    def set__marks(self, new_marks):
+        self.__marks= new_marks
+    def get__marks(self):
+        return self.__marks
+
+    def set__age(self, new_age):
+        self.__age= new_age
+    def get__student_id(self):
+        return self.__age
+
+
+    def validate_marks(self):
+        if 0<=self.__marks & self.__marks<=100:
+            return True
+        else:
+            return False
+
+
+    def validate_age(self):
+        if self.__age>20:
+            return True
+        else:
+            return False
+
+
+    def check_qualification(self):
+        if self.validate_marks() & self.validate_age():
+            if self.__marks>= 65:
+                return True
+            else:
+                return False
+
+
+student_id=str(input('enter student id:- '))
+marks=int(input('enter your marks:- '))
+age=int(input('enter your age:- '))
+Applicant=Student(student_id, marks, age)
+Applicant.set__student_id(str(input('Confirm student id:- ')))
+Applicant.set__marks(int(input('Confirm your marks:- ')))
+Applicant.set__age(int(input('Confirm your age:- ')))
+if Applicant.check_qualification():
+    print('Congratulation',student_id+', you are admitted to university')
+else:
+    print('Sorry',student_id +", you didn't qualify our selection category of age and marks")
